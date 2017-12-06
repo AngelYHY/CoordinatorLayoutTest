@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ParallaxActivity"/>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".ScrollingDemoActivity"
+            android:label="@string/title_activity_scrolling_demo"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".BehaviorActivity"/>
     </application>
 
 </manifest>
