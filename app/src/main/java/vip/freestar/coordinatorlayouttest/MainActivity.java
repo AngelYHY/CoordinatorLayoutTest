@@ -1,5 +1,6 @@
 package vip.freestar.coordinatorlayouttest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
     private List<String> mName;
+    private Class[] mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +35,22 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                if (mActivity[position] != null) {
+                    startActivity(new Intent(MainActivity.this, mActivity[position]));
+                }
             }
         });
     }
 
     private void init() {
         getName();
-        int[] activity = new int[mName.size()];
-
+        mActivity = new Class[mName.size()];
+//        mActivity[3] = ParallaxActivity.class;
+        mActivity[3] = ScrollingDemoActivity.class;
+        mActivity[mName.size() - 1] = BehaviorActivity.class;
     }
 
-    private List<String> getName() {
+    private void getName() {
         mName = new ArrayList<>();
         mName.add("ToolBar Snap");
         mName.add("toolBar的收缩与扩展");
@@ -61,6 +67,6 @@ public class MainActivity extends AppCompatActivity {
         mName.add("DrawlayoutSample");
         mName.add("BottomSheetSample");
         mName.add("仿照微博例子");
-        return mName;
+        mName.add("behavior");
     }
 }
